@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import CommonDetails from "./CommonDetails";
 import ConsumptionDetails from "./ConsumptionDetails";
 import CalculationForm from "./CalculationForm";
+import Result from "./Result";
 
 export {
     Landing,
@@ -11,5 +12,6 @@ export {
     Footer,
     CommonDetails,
     ConsumptionDetails,
-    CalculationForm
+    CalculationForm,
+    Result
 }

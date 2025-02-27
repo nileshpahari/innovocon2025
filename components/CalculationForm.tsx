@@ -20,12 +20,21 @@ export default function FootprintForm() {
     foodConsumed: 0,
     wasteGenerated: 0,
   });
+  useEffect(() => {
+    localStorage.setItem("consumptionData", JSON.stringify(consumptionData));
+    console.log("Consumption data changed:", consumptionData);
+    localStorage.setItem("commonData", JSON.stringify(commonData));
+    console.log("Common data changed:", commonData);
+  }, [commonData, consumptionData]);
   return (
     <div>
       {!showForm ? (
-        <CommonDetails setShowForm={setShowForm} setCommonData={setCommonData} />
+        <CommonDetails
+          setShowForm={setShowForm}
+          setCommonData={setCommonData}
+        />
       ) : (
-        <ConsumptionDetails setComsumptionData={setConsumptionData} />
+        <ConsumptionDetails setconsumptionData={setConsumptionData} />
       )}
     </div>
   );

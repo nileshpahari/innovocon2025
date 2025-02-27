@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eco Track",
+  title: "CarbonSense",
   description: "Hackathon-Made Carbon Footprint Calculator",
 };
 
