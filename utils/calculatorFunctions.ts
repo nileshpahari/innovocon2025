@@ -15,7 +15,7 @@ export async function getTransportEmissionFromFlight(distance: number) {
         },
         headers: {
           "x-rapidapi-host": "carbonfootprint1.p.rapidapi.com",
-          "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
+          "x-rapidapi-key": process.env.RAPID_API_KEY,
         },
       }
     );
@@ -39,7 +39,7 @@ export async function getTransportEmissionFromCar(
         },
         headers: {
           "x-rapidapi-host": "carbonfootprint1.p.rapidapi.com",
-          "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
+          "x-rapidapi-key": process.env.RAPID_API_KEY,
         },
       }
     );
@@ -61,7 +61,7 @@ export async function getTransportEmissionFromMotorBike(distance: number) {
         },
         headers: {
           "x-rapidapi-host": "carbonfootprint1.p.rapidapi.com",
-          "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
+          "x-rapidapi-key": process.env.RAPID_API_KEY,
         },
       }
     );
@@ -85,7 +85,7 @@ export async function getTransportEmissionFromPublicTransit(
         },
         headers: {
           "x-rapidapi-host": "carbonfootprint1.p.rapidapi.com",
-          "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
+          "x-rapidapi-key": process.env.RAPID_API_KEY,
         },
       }
     );
@@ -94,33 +94,74 @@ export async function getTransportEmissionFromPublicTransit(
   } catch {}
 }
 
+// export async function getElectricityEmission(
+//   countryCode: string,
+//   electricityConsumed: number
+// ): Promise<number> {
+//   try {
+//     const requestData = {
+//       type: "electricity",
+//       electricity_unit: "mwh",
+//       electricity_value: electricityConsumed,
+//       country: countryCode,
+//       state: "fl",
+//     };
+
+//     const response = await axios.post(
+//       "https://www.carboninterface.com/api/v1/estimates",
+//       requestData,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${process.env.CARBON_INTERFACE_API_KEY}`,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+// console.log("Electricity: ", response)
+//     return response.data.data.attributes.carbon_kg;
+//   } catch (error) {
+//     console.error("Error fetching electricity emission data:", error);
+//     throw error;
+//   }
+// }
+
 export async function getElectricityEmission(
   countryCode: string,
   electricityConsumed: number
 ): Promise<number> {
   try {
-    const requestData = {
+    return await fetchEmission(countryCode, electricityConsumed);
+  } catch (error) {
+    console.warn(`Country "${countryCode}" not supported. Falling back to "US".`);
+    try {
+      return await fetchEmission("US", electricityConsumed);
+    } catch (fallbackError) {
+      console.error("US fetch also failed. Returning 0.");
+      return 0; // Prevents breaking calculations
+    }
+  }
+}
+
+async function fetchEmission(
+  countryCode: string,
+  electricityConsumed: number
+): Promise<number> {
+  const API_KEY = process.env.CARBON_INTERFACE_API_KEY; // ✅ Secure API Key
+  const response = await axios.post(
+    "https://www.carboninterface.com/api/v1/estimates",
+    {
       type: "electricity",
-      electricity_unit: "mwh",
+      electricity_unit: "kwh",
       electricity_value: electricityConsumed,
       country: countryCode,
-      state: "fl",
-    };
+    },
+    {
+      headers: {
+        Authorization: API_KEY,
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
-    const response = await axios.post(
-      "https://www.carboninterface.com/api/v1/estimates",
-      requestData,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_CARBON_INTERFACE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-console.log("Electricity: ", response)
-    return response.data.data.attributes.carbon_kg;
-  } catch (error) {
-    console.error("Error fetching electricity emission data:", error);
-    throw error;
-  }
+  return response.data.data.attributes.carbon_kg;
 }

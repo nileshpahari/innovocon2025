@@ -137,7 +137,7 @@ export default function ResultPage() {
               {footprintData.particularFootprints.meals.toFixed(2)} kg CO₂
             </div>
           </div>
-          {aiTips ? (
+          {aiTips!=null ? (
             <AiTips aiTips={aiTips} />
           ) : (
             <p className="mt-6 text-center text-gray-400">
