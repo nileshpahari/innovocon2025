@@ -13,7 +13,8 @@
     "next": "15.2.0",
     "openai": "^4.85.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AiTips } from "./index";
+import { AiTips, ComparisonMessage, Graph } from "./index";
 import countryAverages from "@/data/countryAverages.json";
-import { ComparisonMessage } from "./index";
 
 interface FootprintData {
   totalFootprint: number;
@@ -23,6 +22,8 @@ export default function ResultPage() {
   const [error, setError] = useState<string | null>(null);
   const [aiTips, setAiTips] = useState<string | null>(null);
   const [comparisonMessage, setComparisonMessage] = useState<string>("");
+  const [chartData, setChartData] = useState<any[]>([]);
+
   useEffect(() => {
     async function fetchFootprintData() {
       try {
@@ -72,6 +73,7 @@ export default function ResultPage() {
         const countryCode = commonData.country.toUpperCase();
         const countryAverage = countryAverages[countryCode] || 5000;
         const userFootprint = response.data.totalFootprint;
+        const worldAverage = 4800; // Global avg CO₂ footprint (kg/year)
 
         if (userFootprint > countryAverage) {
           setComparisonMessage(
@@ -84,6 +86,11 @@ export default function ResultPage() {
             `🎉 Your footprint is BELOW the national average of ${countryAverage} kg CO₂. Keep up the eco-friendly habits!`
           );
         }
+        setChartData([
+          { name: "World Avg", CO2: worldAverage },
+          { name: `${commonData.country} Avg`, CO2: countryAverage },
+          { name: "Your Footprint", CO2: response.data.totalFootprint },
+        ]);
       } catch (err) {
         console.log(err);
         setError("Error fetching carbon footprint data. Please try again.");
@@ -141,6 +148,8 @@ export default function ResultPage() {
           {comparisonMessage && (
             <ComparisonMessage message={comparisonMessage} />
           )}
+          {/* CO2 Comparison Graph */}
+          <Graph data={chartData} />
         </>
       ) : (
         <p className="text-center">No data available.</p>

@@ -8,6 +8,7 @@ import Result from "./Result";
 import About from "./About";
 import AiTips from "./AiTips";
 import ComparisonMessage from "./ComparisionMessage";
+import Graph from "./Graph";
 
 export {
     Landing,
@@ -19,5 +20,6 @@ export {
     Result,
     About,
     AiTips,
-    ComparisonMessage
+    ComparisonMessage,
+    Graph
 }
