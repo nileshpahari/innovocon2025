@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 interface FootprintData {
   totalFootprint: number;
   particularFootprints: {
@@ -19,6 +18,7 @@ export default function ResultPage() {
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [aiTips, setAiTips] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchFootprintData() {
@@ -39,8 +39,10 @@ export default function ResultPage() {
           electricity: userConsumption.electricityConsumed.toString(),
           transportFlight: userConsumption.transportConsumed.flight.toString(),
           transportCar: userConsumption.transportConsumed.car.toString(),
-          transportPublic: userConsumption.transportConsumed.publicTransit.toString(),
-          transportMotorbike: userConsumption.transportConsumed.motorbike.toString(),
+          transportPublic:
+            userConsumption.transportConsumed.publicTransit.toString(),
+          transportMotorbike:
+            userConsumption.transportConsumed.motorbike.toString(),
           food: userConsumption.foodConsumed.toString(),
           waste: userConsumption.wasteGenerated.toString(),
           country: commonData.country,
@@ -52,8 +54,16 @@ export default function ResultPage() {
           `/api/result?${queryParams}`
         );
         setFootprintData(response.data);
+        const aiResponse = await axios.post("/api/tips", {
+          transport: response.data.particularFootprints.transport,
+          electricity: response.data.particularFootprints.electricity,
+          waste: response.data.particularFootprints.waste,
+          meals: response.data.particularFootprints.meals,
+        });
+
+        setAiTips(aiResponse.data.tips);
       } catch (err) {
-        console.log(err)
+        console.log(err);
         setError("Error fetching carbon footprint data. Please try again.");
       } finally {
         setLoading(false);
@@ -98,6 +108,12 @@ export default function ResultPage() {
               {footprintData.particularFootprints.meals.toFixed(2)} kg CO₂
             </div>
           </div>
+          {aiTips && (
+            <div className="mt-6 p-4 bg-green-900 rounded-lg">
+              <h3 className="text-lg font-semibold">💡 AI-Powered Tips</h3>
+              <p className="mt-2 whitespace-pre-line">{aiTips}</p>
+            </div>
+          )}
         </>
       ) : (
         <p className="text-center">No data available.</p>
