@@ -15,6 +15,16 @@ export default function Navbar() {
         <ul className="flex space-x-6">
           <li>
             <Link
+              href="/about"
+              className={`hover:text-green-400 ${
+                pathname === "/about" ? "text-green-400" : ""
+              }`}
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/calculate"
               className={`hover:text-green-400 ${
                 pathname === "/calculate" ? "text-green-400" : ""
@@ -35,12 +45,12 @@ export default function Navbar() {
           </li> */}
           <li>
             <Link
-              href="/about"
+              href="/moreinfo"
               className={`hover:text-green-400 ${
-                pathname === "/about" ? "text-green-400" : ""
+                pathname === "/moreinfo" ? "text-green-400" : ""
               }`}
             >
-              About
+              More Info
             </Link>
           </li>
         </ul>
