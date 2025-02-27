@@ -20,7 +20,6 @@ export default function FootprintForm() {
     foodConsumed: 0,
     wasteGenerated: 0,
   });
-
   return (
     <div>
       {!showForm ? (
