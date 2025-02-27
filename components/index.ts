@@ -5,6 +5,7 @@ import CommonDetails from "./CommonDetails";
 import ConsumptionDetails from "./ConsumptionDetails";
 import CalculationForm from "./CalculationForm";
 import Result from "./Result";
+import About from "./About";
 
 export {
     Landing,
@@ -13,5 +14,6 @@ export {
     CommonDetails,
     ConsumptionDetails,
     CalculationForm,
-    Result
+    Result,
+    About
 }
