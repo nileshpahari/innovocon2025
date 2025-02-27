@@ -48,6 +48,7 @@ export default function ResultPage() {
           transportMotorbike:
             userConsumption.transportConsumed.motorbike.toString(),
           food: userConsumption.foodConsumed.toString(),
+          mealType: userConsumption.mealType.toString(),
           waste: userConsumption.wasteGenerated.toString(),
           country: commonData.country,
           householdSize: commonData.householdSize.toString(),

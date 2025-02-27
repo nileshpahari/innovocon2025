@@ -94,37 +94,6 @@ export async function getTransportEmissionFromPublicTransit(
   } catch {}
 }
 
-// export async function getElectricityEmission(
-//   countryCode: string,
-//   electricityConsumed: number
-// ): Promise<number> {
-//   try {
-//     const requestData = {
-//       type: "electricity",
-//       electricity_unit: "mwh",
-//       electricity_value: electricityConsumed,
-//       country: countryCode,
-//       state: "fl",
-//     };
-
-//     const response = await axios.post(
-//       "https://www.carboninterface.com/api/v1/estimates",
-//       requestData,
-//       {
-//         headers: {
-//           Authorization: `Bearer ${process.env.CARBON_INTERFACE_API_KEY}`,
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-// console.log("Electricity: ", response)
-//     return response.data.data.attributes.carbon_kg;
-//   } catch (error) {
-//     console.error("Error fetching electricity emission data:", error);
-//     throw error;
-//   }
-// }
-
 export async function getElectricityEmission(
   countryCode: string,
   electricityConsumed: number
