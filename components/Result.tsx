@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { AiTips } from "./index";
+import countryAverages from "@/data/countryAverages.json";
+import { ComparisonMessage } from "./index";
 
 interface FootprintData {
   totalFootprint: number;
@@ -19,7 +22,7 @@ export default function ResultPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [aiTips, setAiTips] = useState<string | null>(null);
-
+  const [comparisonMessage, setComparisonMessage] = useState<string>("");
   useEffect(() => {
     async function fetchFootprintData() {
       try {
@@ -49,11 +52,13 @@ export default function ResultPage() {
           householdSize: commonData.householdSize.toString(),
         });
 
-        // GET request
+        // GET req
         const response = await axios.get<FootprintData>(
           `/api/result?${queryParams}`
         );
         setFootprintData(response.data);
+
+        //POST req
         const aiResponse = await axios.post("/api/tips", {
           transport: response.data.particularFootprints.transport,
           electricity: response.data.particularFootprints.electricity,
@@ -62,6 +67,23 @@ export default function ResultPage() {
         });
 
         setAiTips(aiResponse.data.tips);
+
+        //comparing
+        const countryCode = commonData.country.toUpperCase();
+        const countryAverage = countryAverages[countryCode] || 5000;
+        const userFootprint = response.data.totalFootprint;
+
+        if (userFootprint > countryAverage) {
+          setComparisonMessage(
+            `😟 Your footprint is **${Math.round(
+              (userFootprint / countryAverage) * 100
+            )}%** of the national average. Consider reducing emissions!`
+          );
+        } else {
+          setComparisonMessage(
+            `🎉 Your footprint is BELOW the national average of ${countryAverage} kg CO₂. Keep up the eco-friendly habits!`
+          );
+        }
       } catch (err) {
         console.log(err);
         setError("Error fetching carbon footprint data. Please try again.");
@@ -108,11 +130,16 @@ export default function ResultPage() {
               {footprintData.particularFootprints.meals.toFixed(2)} kg CO₂
             </div>
           </div>
-          {aiTips && (
-            <div className="mt-6 p-4 bg-green-900 rounded-lg">
-              <h3 className="text-lg font-semibold">💡 AI-Powered Tips</h3>
-              <p className="mt-2 whitespace-pre-line">{aiTips}</p>
-            </div>
+          {aiTips ? (
+            <AiTips aiTips={aiTips} />
+          ) : (
+            <p className="mt-6 text-center text-gray-400">
+              Fetching AI tips...
+            </p>
+          )}
+
+          {comparisonMessage && (
+            <ComparisonMessage message={comparisonMessage} />
           )}
         </>
       ) : (

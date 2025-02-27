@@ -23,7 +23,7 @@ export default function Navbar() {
               Calculate
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href="/result"
               className={`hover:text-green-400 ${
@@ -32,7 +32,7 @@ export default function Navbar() {
             >
               Results
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               href="/about"

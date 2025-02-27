@@ -6,6 +6,8 @@ import ConsumptionDetails from "./ConsumptionDetails";
 import CalculationForm from "./CalculationForm";
 import Result from "./Result";
 import About from "./About";
+import AiTips from "./AiTips";
+import ComparisonMessage from "./ComparisionMessage";
 
 export {
     Landing,
@@ -15,5 +17,7 @@ export {
     ConsumptionDetails,
     CalculationForm,
     Result,
-    About
+    About,
+    AiTips,
+    ComparisonMessage
 }
