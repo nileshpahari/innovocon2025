@@ -29,13 +29,16 @@ export async function GET(request: Request) {
       wasteGenerated: parseFloat(searchParams.get("waste") || "0"),
     };
 
-    const country = searchParams.get("country") || "US"; // Default to US if missing
+    const country = searchParams.get("country") || "US"; 
+    const householdSize: number = parseInt(searchParams.get("householdSize") || "1", 10);
 
-    // Calculate emissions
+
+    // emmisions calculation
     const electricity = await getElectricityEmission(
       country,
-      consumptions.electricity
+      (consumptions.electricity*12)/householdSize
     );
+
 
     const transportFlight = await getTransportEmissionFromFlight(
       consumptions.transportFlight * 12
@@ -59,7 +62,6 @@ export async function GET(request: Request) {
     const waste = consumptions.wasteGenerated * wasteEmissionFactor * 52;
     const meals = consumptions.foodConsumed * mealsEmissionFactor * 365;
 
-    // Total footprint
     const totalFootprint = electricity + transport + waste + meals;
     console.log({
       totalFootprint,
