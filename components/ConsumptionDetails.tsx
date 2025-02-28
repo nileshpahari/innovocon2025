@@ -54,7 +54,7 @@ export default function ConsumptionDetails({
       mealType: mealType,
       wasteGenerated: unsureWaste ? worldAverages.wasteWorldAverage : waste,
     };
-    console.log(data);
+    // console.log(data);
     setconsumptionData(data);
     router.push("/result");
   }

@@ -19,7 +19,6 @@ export async function getTransportEmissionFromFlight(distance: number) {
         },
       }
     );
-        console.log("Flight: ", response)
     return response.data.carbonEquivalent;
   } catch (error) {
     console.log(error);
@@ -43,7 +42,6 @@ export async function getTransportEmissionFromCar(
         },
       }
     );
-        console.log("Car: ", response)
     return response.data.carbonEquivalent;
   } catch (error) {
     console.error("Error fetching carbon footprint:", error);
@@ -65,7 +63,6 @@ export async function getTransportEmissionFromMotorBike(distance: number) {
         },
       }
     );
-        console.log("MotorBike: ", response)
     return response.data.carbonEquivalent;
   } catch (error) {
     console.error("Error fetching carbon footprint:", error);
@@ -89,7 +86,6 @@ export async function getTransportEmissionFromPublicTransit(
         },
       }
     );
-    console.log("PublicTransit: ", response)
     return response.data.carbonEquivalent;
   } catch {}
 }

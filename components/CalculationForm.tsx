@@ -34,9 +34,9 @@ export default function FootprintForm() {
   });
   useEffect(() => {
     localStorage.setItem("consumptionData", JSON.stringify(consumptionData));
-    console.log("Consumption data changed:", consumptionData);
+    // console.log("Consumption data changed:", consumptionData);
     localStorage.setItem("commonData", JSON.stringify(commonData));
-    console.log("Common data changed:", commonData);
+    // console.log("Common data changed:", commonData);
   }, [commonData, consumptionData]);
   return (
     <div>

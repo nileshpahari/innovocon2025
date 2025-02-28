@@ -63,15 +63,15 @@ export async function GET(request: Request) {
     const meals = consumptions.foodConsumed * mealsEmissionFactor * 365;
 
     const totalFootprint = electricity + transport + waste + meals;
-    console.log({
-      totalFootprint,
-      particularFootprints: {
-        transport,
-        electricity,
-        waste,
-        meals,
-      },
-    });
+    // console.log({
+    //   totalFootprint,
+    //   particularFootprints: {
+    //     transport,
+    //     electricity,
+    //     waste,
+    //     meals,
+    //   },
+    // });
     return NextResponse.json({
       totalFootprint,
       particularFootprints: {
