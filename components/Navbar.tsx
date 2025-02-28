@@ -33,16 +33,6 @@ export default function Navbar() {
               Calculate
             </Link>
           </li>
-          {/* <li>
-            <Link
-              href="/result"
-              className={`hover:text-green-400 ${
-                pathname === "/result" ? "text-green-400" : ""
-              }`}
-            >
-              Results
-            </Link>
-          </li> */}
           <li>
             <Link
               href="/moreinfo"

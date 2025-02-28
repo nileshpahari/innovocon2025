@@ -62,13 +62,11 @@ export default function ResultPage() {
           householdSize: commonData.householdSize.toString(),
         });
 
-        // GET req
         const response = await axios.get<FootprintData>(
           `/api/result?${queryParams}`
         );
         setFootprintData(response.data);
 
-        //POST req
         const aiResponse = await axios.post("/api/tips", {
           transport: response.data.particularFootprints.transport,
           electricity: response.data.particularFootprints.electricity,
@@ -78,7 +76,6 @@ export default function ResultPage() {
 
         setAiTips(aiResponse.data.tips);
 
-        //comparing
         const countryCode = commonData.country.toUpperCase();
         const countryAverage = countryAveragesTyped[countryCode] || 5000;
 

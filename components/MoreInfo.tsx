@@ -5,7 +5,6 @@ export default function MoreInfo() {
     <div className="max-w-3xl mx-auto p-6 bg-gray-800 text-white rounded-lg shadow-md mt-8">
       <h1 className="text-3xl font-bold text-center text-green-400 mb-6">🌍 How We Calculate Your Footprint</h1>
 
-      {/* Introduction */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold text-green-300">Understanding Your Carbon Footprint</h2>
         <p className="mt-2 text-gray-300">
@@ -15,7 +14,6 @@ export default function MoreInfo() {
         </p>
       </section>
 
-      {/* Transport */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold text-green-300">🚗 Transport</h2>
         <p className="mt-2 text-gray-300">
@@ -30,7 +28,6 @@ export default function MoreInfo() {
         </ul>
       </section>
 
-      {/* Electricity */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold text-green-300">⚡ Electricity</h2>
         <p className="mt-2 text-gray-300">
@@ -44,7 +41,6 @@ export default function MoreInfo() {
         </ul>
       </section>
 
-      {/* Food Consumption */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold text-green-300">🍽️ Food</h2>
         <p className="mt-2 text-gray-300">
@@ -57,7 +53,6 @@ export default function MoreInfo() {
         </ul>
       </section>
 
-      {/* Waste Management */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold text-green-300">♻️ Waste</h2>
         <p className="mt-2 text-gray-300">
@@ -66,7 +61,6 @@ export default function MoreInfo() {
         </p>
       </section>
 
-      {/* Call to Action */}
       <section className="text-center">
         <h2 className="text-xl font-semibold text-green-300">Ready to Calculate Your Footprint?</h2>
         <p className="mt-2 text-gray-300">

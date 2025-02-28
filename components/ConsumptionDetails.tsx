@@ -87,7 +87,6 @@ export default function ConsumptionDetails({
         </label>
       </div>
 
-      {/*Transport */}
       <div className="mb-4">
         <h2 className="font-semibold">🚗 Monthly Transport</h2>
         <label>Distance travelled per month (km)</label>
@@ -151,7 +150,6 @@ export default function ConsumptionDetails({
         </label>
       </div>
 
-      {/* Waste Generated */}
       <div className="mb-4">
         <h2 className="font-semibold">♻️ Waste Management</h2>
         <label>Waste generated per week (kg)</label>
@@ -174,7 +172,6 @@ export default function ConsumptionDetails({
         </label>
       </div>
 
-      {/* Meals per day */}
       <div className="mb-4">
         <h2 className="font-semibold">🍽️ Dietary Habits</h2>
         <label>Number of meals per day</label>
@@ -186,7 +183,7 @@ export default function ConsumptionDetails({
           className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white focus:ring-2 focus:ring-green-500"
         />
       </div>
-      {/* Meal preference */}
+      
       <div className="mb-4">
         <h2 className="font-semibold">🥗 Meal Preference</h2>
         <label>What type of meals do you generally eat?</label>
@@ -201,7 +198,6 @@ export default function ConsumptionDetails({
         </select>
       </div>
 
-      {/* Submit Button */}
       <button
         onClick={handleCalculate}
         className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-all"
