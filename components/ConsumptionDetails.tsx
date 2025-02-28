@@ -6,7 +6,20 @@ import worldAverages from "@/data/worldAverages.json";
 export default function ConsumptionDetails({
   setconsumptionData,
 }: {
-  setconsumptionData: Function;
+  setconsumptionData: React.Dispatch<
+    React.SetStateAction<{
+      electricityConsumed: number;
+      transportConsumed: {
+        motorbike: number;
+        car: number;
+        publicTransit: number;
+        flight: number;
+      };
+      foodConsumed: number;
+      mealType: string;
+      wasteGenerated: number;
+    }>
+  >;
 }) {
   const [electricity, setElectricity] = useState<number>(0);
   const [motorbike, setMotorbike] = useState<number>(0);

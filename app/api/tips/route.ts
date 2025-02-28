@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, 
 });
 
-export async function POST(request: NextResponse) {
+export async function POST(request: NextRequest) {
   try {
     const { transport, electricity, waste, meals } = await request.json();
 

@@ -1,4 +1,4 @@
-export default function AiTips({ aiTips }: { aiTips: any }) {
+export default function AiTips({ aiTips }: { aiTips: string }) {
   return (
     <div className="mt-6 p-4 bg-green-900 rounded-lg">
       <h3 className="text-lg font-semibold">💡 AI-Powered Tips</h3>

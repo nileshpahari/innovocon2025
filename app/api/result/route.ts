@@ -8,6 +8,7 @@ import {
   getTransportEmissionFromMotorBike,
 } from "@/utils/calculatorFunctions";
 
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -53,7 +54,7 @@ export async function GET(request: Request) {
       transportFlight + transportCar + transportPublic + transportMotorBike;
 
     const wasteEmissionFactor = 0.5;
-    const mealsEmissionFactor = mealList[consumptions.mealType];
+    const mealsEmissionFactor = mealList[consumptions.mealType  as keyof typeof mealList ];
 
     const waste = consumptions.wasteGenerated * wasteEmissionFactor * 52;
     const meals = consumptions.foodConsumed * mealsEmissionFactor * 365;

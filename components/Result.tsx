@@ -2,7 +2,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AiTips, ComparisonMessage, Graph } from "./index";
-import countryAverages from "@/data/countryAverages.json";
+import countryAverages from "@/data/countryAverages.json" assert { type: "json" };
+
+const countryAveragesTyped: Record<string, number> = countryAverages;
+
 
 interface FootprintData {
   totalFootprint: number;
@@ -14,6 +17,11 @@ interface FootprintData {
   };
 }
 
+interface ChartData {
+  name: string;
+  CO2: number;
+}
+
 export default function ResultPage() {
   const [footprintData, setFootprintData] = useState<FootprintData | null>(
     null
@@ -22,7 +30,7 @@ export default function ResultPage() {
   const [error, setError] = useState<string | null>(null);
   const [aiTips, setAiTips] = useState<string | null>(null);
   const [comparisonMessage, setComparisonMessage] = useState<string>("");
-  const [chartData, setChartData] = useState<any[]>([]);
+  const [chartData, setChartData] = useState<ChartData[]>([]);
 
   useEffect(() => {
     async function fetchFootprintData() {
@@ -72,7 +80,8 @@ export default function ResultPage() {
 
         //comparing
         const countryCode = commonData.country.toUpperCase();
-        const countryAverage = countryAverages[countryCode] || 5000;
+        const countryAverage = countryAveragesTyped[countryCode] || 5000;
+
         const userFootprint = response.data.totalFootprint;
         const worldAverage = 4800; // Global avg CO₂ footprint (kg/year)
 

@@ -10,14 +10,26 @@ export default function FootprintForm() {
   }>({ country: "India", householdSize: 1 });
 
   const [consumptionData, setConsumptionData] = useState<{
-    electricityCosumed: number;
-    transportConsumed: number;
+    electricityConsumed: number;
+    transportConsumed: {
+      motorbike: number;
+      car: number;
+      publicTransit: number;
+      flight: number;
+    };
     foodConsumed: number;
+    mealType: string;
     wasteGenerated: number;
   }>({
-    electricityCosumed: 0,
-    transportConsumed: 0,
+    electricityConsumed: 0,
+    transportConsumed: {
+      motorbike: 0,
+      car: 0,
+      publicTransit: 0,
+      flight: 0,
+    },
     foodConsumed: 0,
+    mealType: "mixed",
     wasteGenerated: 0,
   });
   useEffect(() => {
