@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import worldAverages from "@/data/worldAverages.json";
 
 export default function ConsumptionDetails({
   setconsumptionData,
@@ -23,16 +24,22 @@ export default function ConsumptionDetails({
   const router = useRouter();
   function handleCalculate() {
     const data = {
-      electricityConsumed: unsureElectricity ? "average" : electricity,
+      electricityConsumed: unsureElectricity
+        ? worldAverages.electricityWorldAverage
+        : electricity,
       transportConsumed: {
-        motorbike: unsureTransport ? "average" : motorbike,
-        car: unsureTransport ? "average" : car,
-        publicTransit: unsureTransport ? "average" : publicTransit,
-        flight: unsureTransport ? "average" : flight,
+        motorbike: unsureTransport
+          ? worldAverages.motorbikeWorldAverage
+          : motorbike,
+        car: unsureTransport ? worldAverages.carWorldAverage : car,
+        publicTransit: unsureTransport
+          ? worldAverages.publicTransitWorldAverage
+          : publicTransit,
+        flight: unsureTransport ? worldAverages.flightWorldAverage : flight,
       },
       foodConsumed: food,
       mealType: mealType,
-      wasteGenerated: unsureWaste ? "average" : waste,
+      wasteGenerated: unsureWaste ? worldAverages.wasteWorldAverage : waste,
     };
     console.log(data);
     setconsumptionData(data);

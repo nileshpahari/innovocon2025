@@ -1,0 +1,8 @@
+{
+"electricityWorldAverage" : 62.5,
+"motorbikeWorldAverage": 75,
+"carWorldAverage" : 200,
+"publicTransitWorldAverage" : 125,
+"flightWorldAverage" : 50,
+"wasteWorldAverage" : 5
+}

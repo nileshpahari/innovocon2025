@@ -149,7 +149,7 @@ export default function ResultPage() {
           {comparisonMessage && (
             <ComparisonMessage message={comparisonMessage} />
           )}
-          {/* CO2 Comparison Graph */}
+
           <Graph data={chartData} />
         </>
       ) : (
