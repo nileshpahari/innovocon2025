@@ -2,7 +2,7 @@
 
 export default function MoreInfo() {
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-gray-800 text-white rounded-lg shadow-md mt-8">
+    <div className="max-w-3xl mx-auto p-6 bg-gray-800 text-white rounded-lg shadow-md my-8">
       <h1 className="text-3xl font-bold text-center text-green-400 mb-6">🌍 How We Calculate Your Footprint</h1>
 
       <section className="mb-6">

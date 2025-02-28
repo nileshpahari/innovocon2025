@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/recharts": "^1.8.29",
     "axios": "^1.8.1",
     "next": "15.2.0",
     "openai": "^4.85.4",

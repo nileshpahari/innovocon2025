@@ -6,7 +6,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-gray-900 text-white py-4 shadow-lg">
+    <nav className="bg-black text-white py-4 shadow-lg">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
         <h1 className="text-2xl font-bold">
           <Link href="/">CarbonSense 🌱</Link>
