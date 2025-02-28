@@ -35,22 +35,22 @@ export async function GET(request: Request) {
       country,
       consumptions.electricity
     );
+
     const transportFlight = await getTransportEmissionFromFlight(
-      consumptions.transportFlight
+      consumptions.transportFlight * 12
     );
     const transportCar = await getTransportEmissionFromCar(
-      consumptions.transportCar
+      consumptions.transportCar * 12
     );
     const transportPublic = await getTransportEmissionFromPublicTransit(
-      consumptions.transportPublicTransit
+      consumptions.transportPublicTransit * 12
     );
     const transportMotorBike = await getTransportEmissionFromMotorBike(
-      consumptions.transportMotorBike
+      consumptions.transportMotorBike * 12
     );
 
     const transport =
       transportFlight + transportCar + transportPublic + transportMotorBike;
-
 
     const wasteEmissionFactor = 0.5;
     const mealsEmissionFactor = mealList[consumptions.mealType];
