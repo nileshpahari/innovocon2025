@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AiTips, ComparisonMessage, Graph } from "./index";
+import { AiTips, ComparisonMessage, Graph, Loader } from "./index";
 import countryAverages from "@/data/countryAverages.json" assert { type: "json" };
 
 const countryAveragesTyped: Record<string, number> = countryAverages;
@@ -116,7 +116,7 @@ export default function ResultPage() {
       </h1>
 
       {loading ? (
-        <p className="text-center">Loading...</p>
+      <Loader/>
       ) : error ? (
         <p className="text-center text-red-500">{error}</p>
       ) : footprintData ? (

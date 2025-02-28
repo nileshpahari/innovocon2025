@@ -10,18 +10,20 @@ import AiTips from "./AiTips";
 import ComparisonMessage from "./ComparisionMessage";
 import Graph from "./Graph";
 import MoreInfo from "./MoreInfo";
+import Loader from "./Loader";
 
 export {
-    Landing,
-    Navbar,
-    Footer,
-    CommonDetails,
-    ConsumptionDetails,
-    CalculationForm,
-    Result,
-    About,
-    AiTips,
-    ComparisonMessage,
-    Graph,
-    MoreInfo
-}
+  Landing,
+  Navbar,
+  Footer,
+  CommonDetails,
+  ConsumptionDetails,
+  CalculationForm,
+  Result,
+  About,
+  AiTips,
+  ComparisonMessage,
+  Graph,
+  MoreInfo,
+  Loader,
+};
