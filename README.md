@@ -2,5 +2,5 @@
 
 Caution: The deployed app may give return some errors as the API key may have expired by the time you are running the app.
 
-To run locally clone the repo and then
+To run locally, first clone the repo and then run
  ``` npm run dev ```
