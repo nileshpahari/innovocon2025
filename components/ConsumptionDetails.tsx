@@ -72,7 +72,7 @@ export default function ConsumptionDetails({
           type="number"
           min="0"
           value={unsureElectricity ? "" : electricity}
-          onChange={(e) => setElectricity(parseInt(e.target.value) || 0)}
+          onChange={(e) => setElectricity(parseInt(e.target.value))}
           className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white focus:ring-2 focus:ring-green-500"
           disabled={unsureElectricity}
         />
@@ -97,7 +97,7 @@ export default function ConsumptionDetails({
             type="number"
             min="0"
             value={unsureTransport ? "" : motorbike}
-            onChange={(e) => setMotorbike(parseInt(e.target.value) || 0)}
+            onChange={(e) => setMotorbike(parseInt(e.target.value))}
             className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white"
             disabled={unsureTransport}
           />
@@ -109,7 +109,7 @@ export default function ConsumptionDetails({
             type="number"
             min="0"
             value={unsureTransport ? "" : car}
-            onChange={(e) => setCar(parseInt(e.target.value) || 0)}
+            onChange={(e) => setCar(parseInt(e.target.value))}
             className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white"
             disabled={unsureTransport}
           />
@@ -121,7 +121,7 @@ export default function ConsumptionDetails({
             type="number"
             min="0"
             value={unsureTransport ? "" : publicTransit}
-            onChange={(e) => setPublicTransit(parseInt(e.target.value) || 0)}
+            onChange={(e) => setPublicTransit(parseInt(e.target.value))}
             className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white"
             disabled={unsureTransport}
           />
@@ -133,7 +133,7 @@ export default function ConsumptionDetails({
             type="number"
             min="0"
             value={unsureTransport ? "" : flight}
-            onChange={(e) => setFlight(parseInt(e.target.value) || 0)}
+            onChange={(e) => setFlight(parseInt(e.target.value))}
             className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white"
             disabled={unsureTransport}
           />
@@ -157,7 +157,7 @@ export default function ConsumptionDetails({
           type="number"
           min="0"
           value={unsureWaste ? "" : waste}
-          onChange={(e) => setWaste(parseInt(e.target.value) || 0)}
+          onChange={(e) => setWaste(parseInt(e.target.value))}
           className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white"
           disabled={unsureWaste}
         />
@@ -179,11 +179,11 @@ export default function ConsumptionDetails({
           type="number"
           min="1"
           value={food}
-          onChange={(e) => setFood(parseInt(e.target.value) || 1)}
+          onChange={(e) => setFood(parseInt(e.target.value))}
           className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white focus:ring-2 focus:ring-green-500"
         />
       </div>
-      
+
       <div className="mb-4">
         <h2 className="font-semibold">🥗 Meal Preference</h2>
         <label>What type of meals do you generally eat?</label>
